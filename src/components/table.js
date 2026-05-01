@@ -11,6 +11,7 @@ export function initTable(settings, onAction) {
     const {tableTemplate, rowTemplate, before, after} = settings;
     const root = cloneTemplate(tableTemplate);
 
+
     // @todo: #1.2 —  вывести дополнительные шаблоны до и после таблицы
 
     // @todo: #1.3 —  обработать события и вызвать onAction()
@@ -19,20 +20,14 @@ export function initTable(settings, onAction) {
         // @todo: #1.1 — преобразовать данные в массив строк на основе шаблона rowTemplate
         const nextRows = data.map(item => {
             const row = cloneTemplate(rowTemplate);
-            console.log(row);
 
             Object.keys(item).forEach(key => {
-  
                 if (row.elements[key]) {
-                   
                     row.elements[key].textContent = item[key];
                 }
             });
-            
             return row.container;
         });
-        console.log(nextRows);
-        console.log(root.elements.rows)
         root.elements.rows.replaceChildren(...nextRows);
     }
 
