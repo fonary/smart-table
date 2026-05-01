@@ -14,8 +14,6 @@ import { initFiltering } from "./components/filtering.js";
 
 // Исходные данные используемые в render()
 const { data, ...indexes } = initData(sourceData);
-console.log(indexes);
-console.log(data);
 
 /**
  * Сбор и обработка полей из таблицы
@@ -39,7 +37,6 @@ function collectState() {
  * @param {HTMLButtonElement?} action
  */
 function render(action) {
-  console.log(action);
   let state = collectState(); // состояние полей из таблицы
   let result = [...data]; // копируем для последующего изменения
   // @todo: использование
@@ -59,7 +56,6 @@ const sampleTable = initTable(
   },
   render,
 );
-console.log(sampleTable);
 
 // @todo: инициализация
 const applyPagination = initPagination(
@@ -81,7 +77,6 @@ const applySorting = initSorting([
   sampleTable.header.elements.sortByTotal,
 ]);
 
-console.log(sampleTable.filter.elements);
 
 const applyFiltering = initFiltering(sampleTable.filter.elements, {
   // передаём элементы фильтра
